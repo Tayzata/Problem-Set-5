@@ -1,0 +1,61 @@
+package edu.monmouth.musicalInstrument;
+import java.util.ArrayList;
+
+public class RecordingEquipment implements MusicShopItem {
+
+	
+	
+	private String name;
+    private double price;
+    private final ArrayList<MusicShopItem> associatedItems;
+
+    public RecordingEquipment(String name, double price) {
+        setName(name);
+        setPrice(price);
+        this.associatedItems = new ArrayList<>();
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setName(String name) {
+        if (name == null || name.isEmpty()) {
+            this.name = RecordingEquipmentConstants.UNKNOWN_NAME;
+        } else {
+            this.name = name;
+        }
+    }
+
+    public void setPrice(double price) {
+        if (price < RecordingEquipmentConstants.MIN_PRICE || price > RecordingEquipmentConstants.MAX_PRICE) {
+            this.price = RecordingEquipmentConstants.UNINITIALIZED_PRICE;
+        } else {
+            this.price = price;
+        }
+    }
+
+    @Override
+    public ArrayList<MusicShopItem> getAssociatedItems() {
+        return associatedItems;
+    }
+
+    @Override
+    public void addAssociatedItem(MusicShopItem item) {
+        if (item != null && !associatedItems.contains(item)) {
+            associatedItems.add(item);
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "RecordingEquipment[name=" + name + ", price=" + price + "]";
+    }
+	
+	
+	
+}
