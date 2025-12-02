@@ -1,0 +1,10 @@
+package edu.monmouth.musicalInstrument;
+import java.util.ArrayList;
+
+public interface MusicShopItem {
+
+	ArrayList<MusicShopItem> getAssociatedItems();
+
+    void addAssociatedItem(MusicShopItem item);
+
+}
