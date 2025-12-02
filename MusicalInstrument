@@ -1,0 +1,81 @@
+package edu.monmouth.musicalInstrument;
+import java.util.ArrayList;
+import java.util.List;
+
+public class MusicalInstrument implements MusicShopItem {
+
+	private String name;
+    private String type;
+    private int numberOfKeysOrStrings;
+    private double price;
+    private List<MusicShopItem> associatedItems;
+
+    public MusicalInstrument() {
+        this("UNKNOWN", "UNKNOWN", 0, 0.0);
+    }
+
+    public MusicalInstrument(String name, String type, int numberOfKeysOrStrings) {
+        this(name, type, numberOfKeysOrStrings, 0.0);
+    }
+
+    public MusicalInstrument(String name, String type, int numberOfKeysOrStrings, double price) {
+        setName(name);
+        setType(type);
+        setNumberOfKeysOrStrings(numberOfKeysOrStrings);
+        setPrice(price);
+        this.associatedItems = new ArrayList<>();
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public int getNumberOfKeysOrStrings() {
+        return numberOfKeysOrStrings;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setName(String name) {
+        this.name = (name == null ? "UNKNOWN" : name);
+    }
+
+    public void setType(String type) {
+        this.type = (type == null ? "UNKNOWN" : type);
+    }
+
+    public void setNumberOfKeysOrStrings(int numberOfKeysOrStrings) {
+        this.numberOfKeysOrStrings = Math.max(0, numberOfKeysOrStrings);
+    }
+
+    public void setPrice(double price) {
+        this.price = Math.max(0.0, price);
+    }
+
+    public List<MusicShopItem> getAssociatedItems() {
+        return associatedItems;
+    }
+
+    public void addAssociatedItem(MusicShopItem item) {
+        if (item != null && !associatedItems.contains(item)) {
+            associatedItems.add(item);
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "Instrument[name=" + name + ", type=" + type +
+               ", keys/strings=" + numberOfKeysOrStrings +
+               ", price=" + price + "]";
+    }
+	
+	
+	
+	
+	
